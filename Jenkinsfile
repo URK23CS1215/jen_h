@@ -3,14 +3,14 @@ pipeline {
 
     environment {
         IMAGE_NAME = "myapp"
-        DOCKER_USER = "your-dockerhub-username"
+        DOCKER_HUB_USER = "hannahantony"
     }
 
     stages {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $DOCKER_USER/$IMAGE_NAME:latest .'
+                sh 'docker build -t $DOCKER_HUB_USER/$IMAGE_NAME:latest .'
             }
         }
 
@@ -30,13 +30,13 @@ pipeline {
 
         stage('Push Image') {
             steps {
-                sh 'docker push $DOCKER_USER/$IMAGE_NAME:latest'
+                sh 'docker push $DOCKER_HUB_USER/$IMAGE_NAME:latest'
             }
         }
 
         stage('Run Container') {
             steps {
-                sh 'docker run -d -p 5000:5000 $DOCKER_USER/$IMAGE_NAME:latest || true'
+                sh 'docker run -d -p 5000:5000 $DOCKER_HUB_USER/$IMAGE_NAME:latest || true'
             }
         }
     }
