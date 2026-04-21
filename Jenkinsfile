@@ -9,10 +9,10 @@ pipeline {
     stages {
 
         stage('Clone Code') {
-    steps {
-        git branch: 'master', url: 'https://github.com/URK23CS1215/jen_h.git'
-    }
-}
+            steps {
+                git 'https://github.com/URK23CS1215/jen_h.git'
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
